@@ -166,10 +166,54 @@ echo $count;
 echo "\n\n";
 function printStringReturnNumber()
 {
-    echo "Some line";
+    echo "\nSome line";
     return 5;
 }
 $myNum = printStringReturnNumber();
 echo $myNum;
+echo "\n\n";
+
+//task_16
+function increaseEnthusiasm($string)
+{
+    return $string . '!';
+}
+echo increaseEnthusiasm("\nWork it!");
+
+function repeatThreeTimes($string)
+{
+    return $string . $string . $string;
+}
+echo "\n";
+echo repeatThreeTimes("Bla ");
+echo "\n";
+echo increaseEnthusiasm(repeatThreeTimes('Meme'));
+
+function cut($string, $number = 10)
+{
+    if (strlen($string) < $number)
+    {
+       return "There are less than 10 letters in this word.";
+    }
+    else
+    {
+        return "There are at least 10 letters in this word.";
+    }
+}
+echo "\n";
+echo cut("Words");
+echo "\n";
+echo cut("Words", 3);
+
+
+function Show($array, $value = 0)
+{
+    echo "$array[$value] ";
+    Show($array, $value + 1);
+}
+
+echo "\n";
+Show($mass);
+
 echo "\n\n";
 
