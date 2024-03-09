@@ -1,4 +1,5 @@
 <?php
+//task 1
 /* Imagine a lot of code here */
 $very_bad_unclear_name = "15 chicken wings";
 
@@ -11,7 +12,7 @@ $order .= " and a lot of things";
 // Don't change the line below
 echo "\nYour order is: $very_bad_unclear_name.";
 
-
+echo "\n";
 //task_2
 $intNumber = 5;
 echo "\n$intNumber";
@@ -28,7 +29,7 @@ $lastMonth = 1187.23;
 $thisMonth = 1089.98;
 echo "\n";
 echo $lastMonth - $thisMonth;
-echo "\n";
+echo "\n\n";
 
 //task_11
 $numLanguages = 4;
@@ -36,11 +37,11 @@ $month = 11;
 $days = $month * 16;
 $daysPerLanguage = $days / $numLanguages;
 echo $daysPerLanguage;
-echo "\n";
+echo "\n\n";
 
 //task_12
 echo 8 ** 2;
-echo "\n";
+echo "\n\n";
 
 //task_13
 $myNum = 1431;
@@ -52,7 +53,7 @@ $answer /= 2;
 $answer -= $myNum;
 echo "\n";
 echo $answer;
-
+echo "\n\n";
 //task_14
 
 //part 1
@@ -60,7 +61,7 @@ $a = 10;
 $b = 3;
 $c = $a % $b;
 echo $c;
-
+echo "\n";
 if ($c === 0)
     echo "Делится";
 else
@@ -68,6 +69,7 @@ else
 
 //part 2
 $st = pow(2,10);
+echo "\n";
 echo $st;
 
 echo "\n";
@@ -143,6 +145,7 @@ for ($i = 1; $i <= $number; $i++){
     if ($number % $i == 0)
         Array_push($dividers, $i);
 }
+echo "\n";
 foreach($dividers as $value)
 {
     echo "$value ";
@@ -158,3 +161,15 @@ while ($sum<=10)
 }
 echo "\n";
 echo $count;
+
+//task_15
+echo "\n\n";
+function printStringReturnNumber()
+{
+    echo "Some line";
+    return 5;
+}
+$myNum = printStringReturnNumber();
+echo $myNum;
+echo "\n\n";
+
