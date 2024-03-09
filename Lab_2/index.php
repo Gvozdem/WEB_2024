@@ -37,3 +37,8 @@ $days = $month * 16;
 $daysPerLanguage = $days / $numLanguages;
 echo $daysPerLanguage;
 echo "\n";
+
+//task_12
+echo 8 ** 2;
+echo "\n";
+
