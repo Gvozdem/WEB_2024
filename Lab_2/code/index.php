@@ -377,3 +377,12 @@ if (count($arr) == 3) {
     echo "<br />$sum";
 }
 
+//task_19
+echo "<br />Задание 19<br />";
+$str = "";
+for ($i = 1; $i <= 20; $i++)
+{
+    $str .= "X";
+    echo "<br />", $str;
+}
+
