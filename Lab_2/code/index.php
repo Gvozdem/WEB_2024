@@ -65,7 +65,7 @@ $b = 3;
 $c = $a % $b;
 echo $c;
 echo "<br />";
-if ($c == 0)
+if (0 === $c)
     echo "Делится";
 else
     echo "Делится с остатком $c";
@@ -145,7 +145,7 @@ foreach($newArr as $value)
 $dividers = [];
 $number = 35;
 for ($i = 1; $i <= $number; $i++){
-    if ($number % $i == 0)
+    if (0 === ($number % $i))
         Array_push($dividers, $i);
 }
 echo "<br />";
@@ -157,7 +157,7 @@ foreach($dividers as $value)
 $mass = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 $sum = 0;
 $count = 0;
-while ($sum<=10)
+while (10 >= $sum)
 {
     $sum += $mass[$count];
     $count += 1;
@@ -211,12 +211,12 @@ echo "<br />";
 echo cut("Words", 3);
 
 
-function showArray($array) {
-    if (is_array( $array ) &&count($array) > 0) {
+function showArray($array)
+{
+    if (is_array( $array ) && 0 < count($array))
+    {
         echo $array[0] . " ";
-        // delete the first element and shift the array to the left
         array_shift($array);
-        // calling function itself
         showArray($array);
     }
 }
@@ -228,7 +228,7 @@ function digitSum($number)
 {
 
     $digitsSum =  array_sum(str_split($number));
-    if ($digitsSum > 9) {
+    if (9 < $digitsSum) {
         return digitSum($digitsSum);
     }
     return $digitsSum;
@@ -322,7 +322,7 @@ echo count($array);
 echo "<br />";
 echo end($array);
 echo "<br />";
-echo $array[count($array)-2];
+echo $array[count($array) - 2];
 echo "<br />";
 
 //task_18
@@ -331,7 +331,7 @@ echo "<br />Задание 18<br />";
 function checkSum($number1, $number2)
 {
     $sum = $number1 + $number2;
-    if ($sum > 10)
+    if (10 < $sum)
     {
         return true;
     }
@@ -344,7 +344,7 @@ echo "<br />";
 
 function checkEqually($number1, $number2)
 {
-    if ($number1 == $number2)
+    if ($number1 === $number2)
     {
         return true;
     }
@@ -356,15 +356,18 @@ echo checkEqually(5,5);
 
 echo "<br />";
 $test = 0;
-if ($test == 0) echo 'Верно';
+if (0 === $test) echo 'Верно';
 
 $age = 42;
-if ($age < 10 || $age > 99) {
+if (10 > $age || 99 < $age)
+{
     echo "<br />Out of range";
 }
-else {
+else
+{
     $digitSum = array_sum(str_split($age));
-    if ($digitSum <= 9) {
+    if (9 >= $digitSum)
+    {
         echo "<br />Сумма цифр однозначна";
     } else {
         echo "<br />Сумма цифр двузначна";
@@ -372,7 +375,8 @@ else {
 }
 
 $arr = [1, 2, 3];
-if (count($arr) == 3) {
+if (3 === count($arr))
+{
     $sum = array_sum($arr);
     echo "<br />$sum";
 }
