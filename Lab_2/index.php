@@ -42,3 +42,14 @@ echo "\n";
 echo 8 ** 2;
 echo "\n";
 
+//task_13
+$myNum = 1431;
+$answer = $myNum;
+$answer += 2;
+$answer *= 2;
+$answer -= 2;
+$answer /= 2;
+$answer -= $myNum;
+echo "\n";
+echo $answer;
+
