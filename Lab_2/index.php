@@ -206,14 +206,27 @@ echo "\n";
 echo cut("Words", 3);
 
 
-function Show($array, $value = 0)
+function ShowArray($array, $value = 0)
 {
     echo "$array[$value] ";
-    Show($array, $value + 1);
+    ShowArray($array, $value + 1);
 }
 
 echo "\n";
-Show($mass);
+ShowArray($mass);
+
+function digitSum($number)
+{
+
+    $digitsSum =  array_sum(str_split($number));
+    if ($digitsSum > 9) {
+        return digitSum($digitsSum);
+    }
+    return $digitsSum;
+}
+
 
 echo "\n\n";
+
+
 
