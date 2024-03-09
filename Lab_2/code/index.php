@@ -376,13 +376,41 @@ if (count($arr) == 3) {
     $sum = array_sum($arr);
     echo "<br />$sum";
 }
-
+echo "<br />";
 //task_19
-echo "<br />Задание 19<br />";
+echo "<br />Задание 19";
 $str = "";
 for ($i = 1; $i <= 20; $i++)
 {
     $str .= "X";
     echo "<br />", $str;
 }
+echo "<br />";
+//task_20
+echo "<br />Задание 20<br />";
 
+$array = [481, 394, 34, 58, 81, 37, 28, 291];
+$average = array_sum($array) / count($array);
+echo $average;
+echo "<br />";
+
+$number = 100;
+$sum = ($number * ($number + 1)) / 2;
+echo $sum;
+
+$arr = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100];
+$result = array_map('sqrt', $arr);
+echo "<br />[ ";
+foreach($result as $value) echo "$value ";
+echo "]";
+
+$characters = range('a', 'z');
+$numbers = range(1, 26);
+$result = array_combine($characters, $numbers);
+foreach ($result as $letters => $numbers) echo "<br />$letters => $numbers";
+echo "<br />";
+
+$string = '1234567890';
+$numbers = str_split($string, 2);
+
+echo array_sum($numbers);
