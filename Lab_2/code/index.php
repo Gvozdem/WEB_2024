@@ -65,7 +65,7 @@ $b = 3;
 $c = $a % $b;
 echo $c;
 echo "<br />";
-if ($c === 0)
+if ($c == 0)
     echo "Делится";
 else
     echo "Делится с остатком $c";
@@ -323,3 +323,57 @@ echo "<br />";
 echo end($array);
 echo "<br />";
 echo $array[count($array)-2];
+echo "<br />";
+
+//task_18
+echo "<br />Задание 18<br />";
+
+function checkSum($number1, $number2)
+{
+    $sum = $number1 + $number2;
+    if ($sum > 10)
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+echo checkSum(5,6);
+echo "<br />";
+
+function checkEqually($number1, $number2)
+{
+    if ($number1 == $number2)
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+echo checkEqually(5,5);
+
+echo "<br />";
+$test = 0;
+if ($test == 0) echo 'Верно';
+
+$age = 42;
+if ($age < 10 || $age > 99) {
+    echo "<br />Out of range";
+}
+else {
+    $digitSum = array_sum(str_split($age));
+    if ($digitSum <= 9) {
+        echo "<br />Сумма цифр однозначна";
+    } else {
+        echo "<br />Сумма цифр двузначна";
+    }
+}
+
+$arr = [1, 2, 3];
+if (count($arr) == 3) {
+    $sum = array_sum($arr);
+    echo "<br />$sum";
+}
+
