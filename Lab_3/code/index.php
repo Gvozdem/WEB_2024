@@ -8,7 +8,8 @@
     <title>Lab_3</title>
 </head>
 <body>
-<h3>Task 1 a</h3>
+<h2>Task 1</h2>
+<h3>Part a</h3>
 <?php
 $words = '/a..b/';
 $str = 'ahb acb aeb aeeb adcb axeb';
@@ -18,6 +19,19 @@ echo "Ответ:<br />";
 foreach ($matches[0] as $match) {
     echo $match."<br />";
 }
+?>
+<h3>Part b</h3>
+<?php
+$words = '/(\d+)/';
+$string = 'a1b2c3d4f5e6';
+$replacement = function($matches) {
+    $number = $matches[1];
+    $cube = pow($number, 3);
+    return $cube;
+};
+
+$result = preg_replace_callback($words, $replacement, $string);
+echo "Новая строка:<br />$result"
 ?>
 </body>
 </html>
