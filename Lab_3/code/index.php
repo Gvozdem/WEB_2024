@@ -1,14 +1,11 @@
 <?php
 session_start();
-// Проверяем наличие данных
-if (isset($_SESSION['surname']) && isset($_SESSION['name']) && isset($_SESSION['age'])) {
-    $surname = $_SESSION['surname'];
-    $name = $_SESSION['name'];
-    $age = $_SESSION['age'];
-} else {
-    header('Location: task_2_b.php');
-    exit();
-}
+// Для 2(b) задания
+$surname = $_SESSION['surname'];
+$name = $_SESSION['name'];
+$age = $_SESSION['age'];
+// Для 2(c) задания
+$userData = $_SESSION['userData'];
 ?>
 
 <!doctype html>
@@ -51,11 +48,21 @@ echo "Новая строка:<br />$result"
 // Подключаем файл одним способом
 include 'task_2_a.php';
 ?>
-<!--Подключаем файл другим способом (тут я просто пытался по разному подключить и соответсвенно понять :)-->
+<!--Подключаем файл другим способом (тут я просто пытался по разному подключить и соответсвенно понять) :)-->
 <a href="task_2_b.php"><h3>Part b</h3></a>
     <h2>Сохраненные данные:</h2>
     <p>Фамилия: <?php echo $surname; ?></p>
     <p>Имя: <?php echo $name; ?></p>
     <p>Возраст: <?php echo $age; ?></p>
+<a href="task_2_c.php"><h3>Part c</h3></a>
+    <h2>Сохраненные данные:</h2>
+    <ul>
+        <?php
+        foreach ($userData as $key => $value) {
+        echo "<li>{$key}: {$value}</li>";
+        }
+        // Покрасивее не получилось :<
+        ?>
+    </ul>
 </body>
 </html>

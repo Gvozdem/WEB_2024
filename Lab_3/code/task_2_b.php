@@ -30,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <h2>Форма ввода данных</h2>
 <form method="POST">
     <label for="surname">Фамилия:</label>
-    <input type="text" name="surname" id="surname"><br />
+    <input type="text" name="surname" id="surname" required><br />
 
     <label for="name">Имя:</label>
-    <input type="text" name="name" id="name"><br />
+    <input type="text" name="name" id="name" required><br />
 
     <label for="age">Возраст:</label>
-    <input type="number" name="age" id="age"><br />
+    <input type="number" name="age" id="age" required><br />
 
     <button type="submit">Сохранить</button>
 </form>
