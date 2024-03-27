@@ -4,8 +4,12 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $text = $_POST['text'];
 
-    $wordCount = str_word_count($text);
-    $charCount = strlen($text);
+    $wordCount = 0;
+    if (!empty($text)) {
+        $words = preg_split('/\s+/', $text);
+        $wordCount = count($words);
+    }
+    $charCount = mb_strlen($text);
 
     echo "Количество слов: " . $wordCount . "<br />";
     echo "Количество символов: " . $charCount;
