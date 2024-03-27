@@ -1,4 +1,4 @@
-<h2>Task 2</h2>
+<h1>Task 2</h1>
 <h3>Part a</h3>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
