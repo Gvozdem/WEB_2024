@@ -46,12 +46,30 @@ $result = preg_replace_callback($words, $replacement, $string);
 echo "Новая строка:<br />$result"
 ?>
 <!--Задание 2-->
+<h1>Task 2</h1>
+<h3>Part a</h3>
 <?php
-// Подключаем файл одним способом
-include 'task_2_a.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $text = $_POST['text'];
+
+    $wordCount = 0;
+    if (!empty($text)) {
+        $words = preg_split('/\s+/', $text);
+        $wordCount = count($words);
+    }
+    $charCount = mb_strlen($text);
+
+    echo "Количество слов: " . $wordCount . "<br />";
+    echo "Количество символов: " . $charCount;
+}
 ?>
 
-<!--Подключаем файл другим способом (тут я просто пытался по разному подключить и соответсвенно понять) :)-->
+<form method="POST">
+    <textarea name="text" rows="5" cols="40"></textarea><br>
+    <button type="submit">Подсчитать</button>
+</form>
+
+<!--Подключаем файл, чтобы он был как ссылка-->
 <a href="task_2_b.php"><h3>Part b</h3></a>
     <h2>Сохраненные данные:</h2>
     <p>Фамилия: <?php echo $surname; ?></p>
