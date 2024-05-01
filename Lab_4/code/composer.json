@@ -1,0 +1,13 @@
+{
+    "name": "gvozdem/code",
+    "authors": [
+        {
+            "name": "Gvozdem",
+            "email": "gvozdenko.demid@mail.ru"
+        }
+    ],
+    "require": {
+        "google/apiclient": "^2.15",
+        "asimlqt/php-google-spreadsheet-client": "^3.0"
+    }
+}
