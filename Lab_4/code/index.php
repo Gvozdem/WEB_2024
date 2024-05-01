@@ -8,7 +8,7 @@
     <title>Lab_4</title>
 </head>
 <body>
-<h1>Task 3</h1>
+<h1>Form</h1>
 
 <h2>Добавить объявление</h2>
 <form action="form.php" method="POST">
@@ -17,13 +17,9 @@
 
     <label for="category">Категория:</label>
     <select id="category" name="category" required>
-        <?php
-        $categories = array_filter(glob("./categories/*"), 'is_dir');
-        foreach ($categories as $category) {
-            $categoryName = basename($category);
-            echo "<option value=\"$categoryName\">$categoryName</option>";
-        }
-        ?>
+        <option value="auto">Автомобили</option>
+        <option value="services">Сервисы</option>
+        <option value="technic">Техника</option>
     </select><br /><br />
 
     <label for="title">Заголовок объявления:</label>
@@ -34,32 +30,5 @@
 
     <input type="submit" value="Добавить">
 </form>
-
-<h2>Список объявлений</h2>
-<table>
-    <tr>
-        <th>Email</th>
-        <th>Категория</th>
-        <th>Заголовок</th>
-        <th>Текст</th>
-    </tr>
-    <?php
-    // Чтение объявлений из файлов и вывод в таблицу
-    $adFiles = glob("categories/*/*.txt");
-    foreach ($adFiles as $adFile) {
-        $adData = file($adFile, FILE_IGNORE_NEW_LINES);
-        $category = basename(dirname($adFile));
-        $title = basename($adFile, ".txt");
-        $email = $adData[0];
-        $text = $adData[1];
-        echo "<tr>
-                        <td>$email</td>
-                        <td>$category</td>
-                        <td>$title</td>
-                        <td>$text</td>
-                    </tr>";
-    }
-    ?>
-</table>
 </body>
 </html>
