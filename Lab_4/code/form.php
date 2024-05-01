@@ -1,30 +1,34 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $email = $_POST["email"];
-    $category = $_POST["category"];
-    $title = $_POST["title"];
-    $text = $_POST["text"];
+require_once 'vendor/autoload.php';
 
-    // Создание директории, если она не существует
-    if (!is_dir("categories/$category")) {
-        mkdir("categories/$category", 0777, true);
-    }
+// Подключение к Google Sheets API
+$client = new Google_Client();
+$client->setAuthConfig(__DIR__.'/credentials.json');
+$client->addScope(Google_Service_Sheets::SPREADSHEETS);
 
-    // Создание нового объявления в виде текстового файла
-    $adFile = "categories/$category/" . sanitizeFilename($title) . ".txt";
-    $adData = "$email\n$text";
-    file_put_contents($adFile, $adData);
+$service = new Google_Service_Sheets($client);
 
-    header("Location: index.php");
-    exit;
+$spreadsheetId = '1MjlEf8eeuiuKCddRqGOdW0Ec8Fo8FJLRrN5_3zmwD1k';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Получение данных из формы
+    $email = $_POST['email'];
+    $category = $_POST['category'];
+    $title = $_POST['title'];
+    $text = $_POST['text'];
+
+    // Создание массива с данными для записи в таблицу
+    $row = [$email, $category, $title, $text];
+
+    // Добавление данных в таблицу
+    $range = 'Лист1!A1'; // Диапазон ячеек, куда будут записаны данные
+    $valueRange = new Google_Service_Sheets_ValueRange(['values' => [$row]]);
+    $service->spreadsheets_values->append($spreadsheetId, $range, $valueRange, ['valueInputOption' => 'USER_ENTERED']);
+
+    // Возвращаем успешный HTTP-статус
+    http_response_code(200);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+} else {
+    // Возвращаем ошибку, если запрос не является POST-запросом
+    http_response_code(400);
 }
-
-// Функция для очистки имени файла от недопустимых символов
-function sanitizeFilename($filename) {
-    $filename = preg_replace("/[^a-zA-Z0-9а-яА-Я\s]/u", "", $filename); // Удаление специальных символов
-    $filename = preg_replace("/\s+/", " ", $filename); // Удаление повторяющихся пробелов
-    $filename = trim($filename); // Удаление пробелов в начале и конце строки
-    $filename = str_replace(" ", "_", $filename); // Замена пробелов на подчеркивания
-    return $filename;
-}
-?>
