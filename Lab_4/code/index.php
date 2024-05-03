@@ -1,3 +1,21 @@
+<?php
+require_once 'vendor/autoload.php';
+
+// Подключение к Google Sheets API
+$client = new Google_Client();
+$client->setAuthConfig(__DIR__.'/credentials.json');
+$client->addScope(Google_Service_Sheets::SPREADSHEETS);
+
+$service = new Google_Service_Sheets($client);
+
+$spreadsheetId = '1MjlEf8eeuiuKCddRqGOdW0Ec8Fo8FJLRrN5_3zmwD1k';
+
+// Получение данных из таблицы
+$response = $service->spreadsheets_values->get($spreadsheetId, 'Лист1');
+$values = $response->getValues();
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -30,5 +48,32 @@
 
     <input type="submit" value="Добавить">
 </form>
+
+<h2>Таблица объявлений</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Категория</th>
+        <th>Заголовок</th>
+        <th>Текст</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    if (!empty($values)) {
+        foreach ($values as $row) {
+            echo "<tr>";
+            echo "<td>" . $row[0] . "</td>";
+            echo "<td>" . $row[1] . "</td>";
+            echo "<td>" . $row[2] . "</td>";
+            echo "<td>" . $row[3] . "</td>";
+            echo "</tr>";
+        }
+    }
+    ?>
+    </tbody>
+</table>
+
 </body>
 </html>
